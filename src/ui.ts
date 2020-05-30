@@ -1,0 +1,56 @@
+export default class UI {
+    gradient: string;
+    dt: number;
+    bandFrequency: number;
+    swirlFrequency: number;
+    mixBandSwirlVelocity:number;
+    saveSurfaceTextures: Function;
+    showDebug: boolean;
+    blendParticle: number;
+    blendSurface: number;
+    integrator: string;
+    advectionIterations: number;
+    restart: Function;
+    render: Function;
+    eyeX: number;
+    eyeY: number;
+    eyeZ: number;
+    targetX: number;
+    targetY: number;
+    targetZ: number;
+    upX: number;
+    upY: number;
+    upZ: number;
+    fov: number;
+    orbitCamera: boolean;
+    lifeTime: number;
+    pause: boolean;
+    constructor(onRender:Function,onRestart:Function,onSaveSurfaceTexture:Function) {
+        this.gradient = "0 0% 1 100%";
+        this.saveSurfaceTextures = onSaveSurfaceTexture;
+        this.bandFrequency = 1;
+        this.swirlFrequency = 1;
+        this.showDebug = true;
+        this.blendParticle = 0.25;
+        this.mixBandSwirlVelocity = 0.5;
+        this.blendSurface = 0.25;
+        this.integrator = 'euler';
+        this.advectionIterations = 1;
+        this.lifeTime = 1;
+        this.dt = 0.00005;
+        this.eyeX = 2;
+        this.eyeY = 0;
+        this.eyeZ = 0.1;
+        this.targetX = 0;
+        this.targetY = 0;
+        this.targetZ = 0;
+        this.upX = 0;
+        this.upY = 0;
+        this.upZ = 1;
+        this.fov = 35;
+        this.pause = true;
+        this.orbitCamera = false;
+        this.restart = onRestart;
+        this.render = onRender;
+    }
+}

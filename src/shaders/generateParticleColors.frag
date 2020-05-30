@@ -1,7 +1,8 @@
 #version 300 es
 precision mediump float;
-out vec4 color;
 flat in ivec4 outPCU;
+
+out vec4 color;
 
 void main()
 {

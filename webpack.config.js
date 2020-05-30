@@ -2,7 +2,7 @@ const path=require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry:'./src/main.ts',
+    entry:'./src/index.ts',
     devtool: "inline-source-map",
     output:
     {

@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: {app: './src/main.ts'},
+  entry: {app: './src/index.ts'},
   devtool: 'source-map',//'source-map' for production
   optimization: {
     minimize: true
