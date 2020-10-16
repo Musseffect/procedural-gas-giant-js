@@ -1,10 +1,9 @@
 import mat4 from "./mat4";
 import vec3 from "./vec3";
 
-export class OrbitCamera
-{
-    theta:number;
-    phi:number;
+export class OrbitCamera{
+    theta:number;//latitude
+    phi:number;//longtitude
     r:number;
     centerX:number;
     centerY:number;
@@ -13,8 +12,7 @@ export class OrbitCamera
     aspect:number;
     near:number;
     far:number;
-    constructor(theta:number,phi:number,r:number,centerX:number,centerY:number,centerZ:number,fov:number,aspect:number,near:number,far:number)
-    {
+    constructor(theta:number,phi:number,r:number,centerX:number,centerY:number,centerZ:number,fov:number,aspect:number,near:number,far:number){
         this.theta = theta;
         this.phi = phi;
         this.r = r;
@@ -26,8 +24,7 @@ export class OrbitCamera
         this.near = near;
         this.far = far;
     }
-    getMatrix():mat4
-    {
+    getMatrix():mat4{
         let th = this.theta*Math.PI/180.0;
         let ph = this.phi*Math.PI/180.0;
         let eye = vec3.create(Math.cos(ph)*Math.cos(th),Math.sin(ph)*Math.cos(th),Math.sin(th));
@@ -39,8 +36,7 @@ export class OrbitCamera
         return mat4.mult(proj,view);
     }
 }
-export class FPSCamera
-{
+export class FPSCamera{
     pitch:number;//rotate left - right around up vector
     yaw:number;//rotate up - down around cross(rotatetDir,up)
     x:number;
@@ -50,12 +46,10 @@ export class FPSCamera
     aspect:number;
     near:number;
     far:number;
-    constructor(pitch:number,yaw:number,x:number,y:number,z:number,fov:number,aspect:number,near:number,far:number)
-    {
+    constructor(pitch:number,yaw:number,x:number,y:number,z:number,fov:number,aspect:number,near:number,far:number){
 
     }
-    getMatrix():mat4
-    {
+    getMatrix():mat4{
         //default dir vector (-1,0,0)
         //up vector (0,0,1)
         let pt = this.pitch*Math.PI/180.0;

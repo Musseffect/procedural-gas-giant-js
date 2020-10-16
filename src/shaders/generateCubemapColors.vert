@@ -8,7 +8,7 @@ uniform vec3 right;
 
 out vec3 normal;
 
-void main() {
+void main(){
 	gl_Position = vec4(position.xy,0.0, 1.0);
 	normal=(direction+up*position.y+right*position.x);
 }

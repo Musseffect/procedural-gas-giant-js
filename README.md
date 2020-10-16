@@ -1,2 +1,4 @@
 # Procedural Gas Giant
-Ha
+Curle noise on a sphere surface
+
+![Screenshot 1](/docs/imgs/planets.jpg)

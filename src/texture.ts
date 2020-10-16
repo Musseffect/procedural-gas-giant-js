@@ -1,42 +1,34 @@
 
-interface TextureParameter
-{
+interface TextureParameter{
     key:number,
     value:number
 }
-class Texture
-{
-    tex:WebGLTexture;
+class Texture{
+    handle:WebGLTexture;
     constructor(gl:WebGL2RenderingContext,level:number,internalFormat:number,
         width:number,height:number,border:number,
-        srcFormat:number,srcType:number,pixels:ArrayBufferView | null,parameters?:TextureParameter[])   
-    {
-        this.tex = gl.createTexture();
-        gl.bindTexture(gl.TEXTURE_2D,this.tex);
+        srcFormat:number,srcType:number,pixels:ArrayBufferView | null,parameters?:TextureParameter[]){
+        this.handle = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D,this.handle);
         gl.texImage2D(gl.TEXTURE_2D,level,internalFormat,width,height, border,srcFormat,srcType,pixels);
         if(parameters!=undefined)
-            parameters.forEach(function(item:TextureParameter)
-            {
+            parameters.forEach(function(item:TextureParameter){
                 gl.texParameteri(gl.TEXTURE_2D,item.key,item.value);
             });
     }
-    bind(gl:WebGL2RenderingContext,unit:number):void
-    {
+    bind(gl:WebGL2RenderingContext,unit:number):void{
         gl.activeTexture(gl.TEXTURE0+unit);
-        gl.bindTexture(gl.TEXTURE_2D,this.tex);
+        gl.bindTexture(gl.TEXTURE_2D,this.handle);
     }
-    static unbind(gl:WebGL2RenderingContext,unit:number):void
-    {
+    static unbind(gl:WebGL2RenderingContext,unit:number):void{
         gl.activeTexture(gl.TEXTURE0+unit);
         gl.bindTexture(gl.TEXTURE_2D,null);
     }
-    get():WebGLTexture
-    {
-        return this.tex;
+    get():WebGLTexture{
+        return this.handle;
     }
-    destroy(gl:WebGL2RenderingContext):void
-    {
-        gl.deleteTexture(this.tex);
+    destroy(gl:WebGL2RenderingContext):void{
+        gl.deleteTexture(this.handle);
     }
 }
 
